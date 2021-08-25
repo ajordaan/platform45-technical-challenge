@@ -1,54 +1,80 @@
 <template>
   <div class="formWrapper">
-    <div class="inputWrapper">
-      <label class="inputLabel" for="name">Name</label>
-      <input class="input" type="text" placeholder="Enter email" name="name" />
-    </div>
-    <div class="inputWrapper">
-      <label class="inputLabel" for="name">Gender</label>
-
-      <div class="iconRow">
-        <form-icon text="Male" :imageUrl="'mars-symbol.svg'"></form-icon>
-        <form-icon text="Female" :imageUrl="'venus-symbol.svg'"></form-icon>
+    <div class="form">
+      <div class="inputWrapper">
+        <label class="inputLabel" for="name">Name</label>
+        <input
+          class="input"
+          type="text"
+          placeholder="Enter email"
+          name="name"
+        />
       </div>
-    </div>
-    <div class="inputWrapper">
-      <label class="inputLabel" for="date">Date of Birth</label>
-      <input class="input" type="text" placeholder="01/02/1983" name="date" />
-    </div>
-    <div class="inputWrapper">
-      <label class="inputLabel" for="email">Email</label>
-      <input
-        class="input"
-        type="text"
-        placeholder="kendall@gmail.com"
-        name="email"
-      />
-    </div>
-    <div class="inputWrapper">
-      <label class="inputLabel" for="mobile">Mobile</label>
-      <input
-        class="input"
-        type="text"
-        placeholder="+91 98765 43210"
-        name="mobile"
-      />
-    </div>
-    <div class="inputWrapper">
-      <label class="inputLabel" for="customer">Customer ID</label>
-      <input
-        class="input"
-        type="text"
-        placeholder="576802-ERD0348 45"
-        name="customer"
-      />
-    </div>
-    <div class="inputWrapper">
-      <label class="inputLabel" for="name">Membership</label>
-      <div class="iconRow">
-        <form-icon text="Classic" :imageUrl="'card.svg'"></form-icon>
-        <form-icon text="Silver" :imageUrl="'card.svg'"></form-icon>
-        <form-icon text="Gold" :imageUrl="'card.svg'"></form-icon>
+      <div class="inputWrapper">
+        <label class="inputLabel" for="name">Gender</label>
+        <div class="iconRow">
+          <form-icon
+            class="genderIconGap"
+            text="Male"
+            :imageUrl="'mars-symbol.svg'"
+          ></form-icon>
+          <form-icon text="Female" :imageUrl="'venus-symbol.svg'"></form-icon>
+        </div>
+      </div>
+      <div class="inputWrapper">
+        <label class="inputLabel" for="date">Date of Birth</label>
+        <input class="input" type="text" placeholder="01/02/1983" name="date" />
+      </div>
+      <div class="inputWrapper">
+        <label class="inputLabel" for="email">Email</label>
+        <input
+          class="input"
+          type="text"
+          placeholder="kendall@gmail.com"
+          name="email"
+        />
+      </div>
+      <div class="inputWrapper">
+        <label class="inputLabel" for="mobile">Mobile</label>
+        <input
+          class="input"
+          type="text"
+          placeholder="+91 98765 43210"
+          name="mobile"
+        />
+      </div>
+      <div class="inputWrapper">
+        <label class="inputLabel" for="customer">Customer ID</label>
+        <input
+          class="input"
+          type="text"
+          placeholder="576802-ERD0348 45"
+          name="customer"
+        />
+      </div>
+      <div class="inputWrapper">
+        <label class="inputLabel" for="name">Membership</label>
+        <div class="iconRow">
+          <form-icon
+            class="membershipIconSpacing"
+            text="Classic"
+            :imageUrl="'card.svg'"
+          ></form-icon>
+          <form-icon
+            class="membershipIconSpacing"
+            text="Silver"
+            :imageUrl="'card.svg'"
+          ></form-icon>
+          <form-icon
+            class="membershipIconSpacing"
+            text="Gold"
+            :imageUrl="'card.svg'"
+          ></form-icon>
+        </div>
+      </div>
+      <div class="buttonsWrapper">
+        <button id="cancelBtn" class="button">CANCEL</button>
+        <button id="saveBtn" class="button is-primary">SAVE</button>
       </div>
     </div>
   </div>
