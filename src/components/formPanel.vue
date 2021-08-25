@@ -90,13 +90,38 @@ export default {
 <style lang="scss" scoped>
 $inputBgColour: rgb(250, 250, 250);
 .input {
-  max-width: 50% !important;
   height: 50px !important;
   border-style: none !important;
   background-color: $inputBgColour !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+button {
+  padding: 10px 40px;
+  margin-bottom: 20px;
+}
+
+#saveBtn {
+  margin-left: 20px;
+}
+
+#cancelBtn {
+  background-color: $inputBgColour;
+  border-style: none;
+}
+
+#cancelBtn:hover {
+  background-color: darken($inputBgColour, 10%);
+}
+
+.genderIconGap {
+  margin-right: 50px;
+}
+
+.membershipIconSpacing {
+  margin-right: 25px;
 }
 
 .input:focus {
@@ -118,13 +143,23 @@ $inputBgColour: rgb(250, 250, 250);
   display: flex;
   align-items: center;
 }
+.buttonsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
 
 .formWrapper {
   margin: 10%;
+  width: 80%;
+}
+
+.form {
+  width: 70%;
 }
 
 .iconRow {
-  width: 50%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -134,6 +169,19 @@ $inputBgColour: rgb(250, 250, 250);
 @media screen and (max-width: 768px) {
   .inputLabel {
     display: block;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    display: block;
+  }
+
+  #saveBtn {
+    margin-left: 0;
   }
 
   .inputWrapper {
