@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <div class="columns">
-      <div class="has-text-centered column is-5">
+  <div id="app wrapper">
+    <div class="columns box">
+      <div class="has-text-centered column is-3">
         <left-panel></left-panel>
       </div>
       <div class="formPanel column is-7">
@@ -20,4 +20,14 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.columns {
+  margin: 100px;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.column {
+  padding: 0 !important;
+}
+</style>

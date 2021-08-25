@@ -22,6 +22,7 @@ export default {};
 <style lang="scss" scoped>
 .leftPanel {
   background-color: #ffd500;
+  height: 100%;
 }
 
 .title {
@@ -37,12 +38,11 @@ export default {};
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10%;
-  margin-bottom: 15%;
+  margin-top: 15%;
 }
 .avatar {
   max-height: 80%;
-  padding-top: 20%;
-  padding-bottom: 15%;
+  padding-top: 30%;
+  padding-bottom: 20%;
 }
 </style>
