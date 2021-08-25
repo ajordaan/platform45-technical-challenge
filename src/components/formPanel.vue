@@ -18,7 +18,11 @@
             text="Male"
             :imageUrl="'mars-symbol.svg'"
           ></form-icon>
-          <form-icon text="Female" :imageUrl="'venus-symbol.svg'"></form-icon>
+          <form-icon
+            class="genderIconGap"
+            text="Female"
+            :imageUrl="'venus-symbol.svg'"
+          ></form-icon>
         </div>
       </div>
       <div class="inputWrapper">
@@ -52,7 +56,7 @@
           name="customer"
         />
       </div>
-      <div class="inputWrapper">
+      <div class="inputWrapper membershipRow">
         <label class="inputLabel" for="name">Membership</label>
         <div class="iconRow">
           <form-icon
@@ -103,7 +107,8 @@ $invalidColour: #ff9200;
 }
 
 button {
-  padding: 10px 40px;
+  padding: 25px 55px;
+  width: 160px;
   margin-bottom: 20px;
 }
 
@@ -127,11 +132,18 @@ button {
 }
 
 .genderIconGap {
+  margin-bottom: 15px;
+}
+.genderIconGap:first-of-type {
   margin-right: 50px;
+}
+.membershipRow {
+  margin-top: 60px;
 }
 
 .membershipIconSpacing {
-  margin-right: 25px;
+  margin-right: 20px;
+  margin-bottom: 15px;
 }
 
 .input:focus {
@@ -154,6 +166,7 @@ button {
   align-items: center;
 }
 .buttonsWrapper {
+  margin-top: 75px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -166,7 +179,8 @@ button {
 }
 
 .form {
-  width: 70%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .iconRow {
@@ -174,21 +188,27 @@ button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  //flex-wrap: wrap;
+  flex-wrap: wrap;
+  //flex-grow: 4;
 }
 
-@media screen and (max-width: 768px) {
-  .inputLabel {
-    display: block;
+@media screen and (max-width: 1023px) {
+  .form {
+    width: 100%;
   }
 
-  .form {
+  .inputLabel {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .icon .form {
     width: 100%;
   }
 
   button {
     width: 100%;
-    display: block;
+    font-size: 18px;
   }
 
   #saveBtn {
@@ -202,6 +222,12 @@ button {
 
   .input {
     max-width: 100% !important;
+    margin-left: 0;
+  }
+
+  .membershipIconSpacing {
+    margin-right: 25px;
+    margin-bottom: 15px;
   }
 }
 </style>
