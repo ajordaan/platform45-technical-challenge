@@ -18,6 +18,7 @@ export default {
 
 <style scoped lang="scss">
 $inputBgColour: #f5f8f9;
+$selectedIconBgColour: #b1bfcd;
 .iconWrapper {
   display: flex;
   align-items: center;
