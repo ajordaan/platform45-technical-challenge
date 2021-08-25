@@ -134,7 +134,7 @@ button {
 
 .inputLabel {
   display: inline-block;
-  width: 150px;
+  width: 130px;
   text-align: left;
 }
 
@@ -160,6 +160,7 @@ button {
 }
 
 .iconRow {
+  margin-left: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
