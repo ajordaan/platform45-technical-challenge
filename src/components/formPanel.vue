@@ -8,14 +8,8 @@
       <label class="inputLabel" for="name">Gender</label>
 
       <div class="iconRow">
-        <div class="iconWrapper">
-          <form-icon :imageUrl="'mars-symbol.svg'"></form-icon>
-          <p class="iconText">Male</p>
-        </div>
-        <div class="iconWrapper">
-          <form-icon :imageUrl="'venus-symbol.svg'"></form-icon>
-          <p class="iconText">Female</p>
-        </div>
+        <form-icon text="Male" :imageUrl="'mars-symbol.svg'"></form-icon>
+        <form-icon text="Female" :imageUrl="'venus-symbol.svg'"></form-icon>
       </div>
     </div>
     <div class="inputWrapper">
@@ -96,28 +90,11 @@ $inputBgColour: rgb(250, 250, 250);
 }
 
 .iconRow {
+  width: 50%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-}
-.iconWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.iconContainer {
-  width: 55px;
-  height: 55px;
-  background: $inputBgColour;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.iconText {
-  color: gray;
-  margin-left: 20px;
-  width: 100px;
+  justify-content: flex-start;
+  //flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {
