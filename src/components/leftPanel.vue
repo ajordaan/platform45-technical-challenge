@@ -5,8 +5,7 @@
     <div>
       <p class="title">Front-end challenge!</p>
       <p class="subtitle mt-3">
-        This is a design that you will need <br />
-        to code up and impress us
+        This is a design that you will need to code up and impress us
       </p>
     </div>
     <div class="arrowContainer">
@@ -27,6 +26,13 @@ export default {};
 
 .title {
   font-weight: bold;
+  font-size: 2.1rem;
+}
+
+.subtitle {
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 1.3rem;
 }
 
 .arrowContainer {
@@ -44,5 +50,15 @@ export default {};
   max-height: 80%;
   padding-top: 30%;
   padding-bottom: 20%;
+}
+
+@media screen and (max-width: 1023px) {
+  .avatar {
+    padding-top: 20%;
+  }
+
+  .leftPanel {
+    padding-bottom: 20%;
+  }
 }
 </style>
