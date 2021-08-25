@@ -5,6 +5,20 @@
       <input class="input" type="text" placeholder="Enter email" name="name" />
     </div>
     <div class="inputWrapper">
+      <label class="inputLabel" for="name">Gender</label>
+
+      <div class="iconRow">
+        <div class="iconWrapper">
+          <form-icon :imageUrl="'mars-symbol.svg'"></form-icon>
+          <p class="iconText">Male</p>
+        </div>
+        <div class="iconWrapper">
+          <form-icon :imageUrl="'venus-symbol.svg'"></form-icon>
+          <p class="iconText">Female</p>
+        </div>
+      </div>
+    </div>
+    <div class="inputWrapper">
       <label class="inputLabel" for="date">Date of Birth</label>
       <input class="input" type="text" placeholder="01/02/1983" name="date" />
     </div>
@@ -39,15 +53,19 @@
 </template>
 
 <script>
-export default {};
+import formIcon from "./formIcon.vue";
+export default {
+  components: { formIcon },
+};
 </script>
 
 <style lang="scss" scoped>
+$inputBgColour: rgb(250, 250, 250);
 .input {
   max-width: 50% !important;
   height: 50px !important;
   border-style: none !important;
-  background-color: rgb(250, 250, 250) !important;
+  background-color: $inputBgColour !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
@@ -75,6 +93,31 @@ export default {};
 
 .formWrapper {
   margin: 10%;
+}
+
+.iconRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.iconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.iconContainer {
+  width: 55px;
+  height: 55px;
+  background: $inputBgColour;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconText {
+  color: gray;
+  margin-left: 20px;
+  width: 100px;
 }
 
 @media screen and (max-width: 768px) {
