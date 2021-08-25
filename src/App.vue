@@ -1,21 +1,23 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <div class="columns">
+      <div class="has-text-centered column is-5">
+        <left-panel></left-panel>
+      </div>
+      <div class="formPanel column is-7">
+        <form-panel></form-panel>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import FormPanel from "./components/formPanel.vue";
+import LeftPanel from "./components/leftPanel.vue";
 export default {
   name: "App",
-  components: {},
+  components: { LeftPanel, FormPanel },
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
