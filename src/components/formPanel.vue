@@ -43,6 +43,14 @@
         name="customer"
       />
     </div>
+    <div class="inputWrapper">
+      <label class="inputLabel" for="name">Membership</label>
+      <div class="iconRow">
+        <form-icon text="Classic" :imageUrl="'card.svg'"></form-icon>
+        <form-icon text="Silver" :imageUrl="'card.svg'"></form-icon>
+        <form-icon text="Gold" :imageUrl="'card.svg'"></form-icon>
+      </div>
+    </div>
   </div>
 </template>
 
