@@ -21,13 +21,17 @@ export default {};
 
 <style lang="scss" scoped>
 .leftPanel {
-  background-color: yellow;
+  background-color: #ffd500;
+}
+
+.title {
+  font-weight: bold;
 }
 
 .arrowContainer {
   width: 65px;
   height: 65px;
-  background: black;
+  background: #383838;
   margin: 0 auto;
   border-radius: 50%;
   display: flex;

@@ -74,7 +74,7 @@
       </div>
       <div class="buttonsWrapper">
         <button id="cancelBtn" class="button">CANCEL</button>
-        <button id="saveBtn" class="button is-primary">SAVE</button>
+        <button id="saveBtn" class="button">SAVE</button>
       </div>
     </div>
   </div>
@@ -88,8 +88,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$inputBgColour: rgb(250, 250, 250);
+$inputBgColour: #f5f8f9;
+$selectedIconBgColour: #b1bfcd;
+
+$invalidColour: #ff9200;
 .input {
+  margin-left: 30px;
   height: 50px !important;
   border-style: none !important;
   background-color: $inputBgColour !important;
@@ -105,6 +109,12 @@ button {
 
 #saveBtn {
   margin-left: 20px;
+  background-color: #60e6c5;
+  color: white;
+  border-style: none;
+}
+#saveBtn:hover {
+  background-color: darken(#60e6c5, 10%);
 }
 
 #cancelBtn {

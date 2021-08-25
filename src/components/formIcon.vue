@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$inputBgColour: rgb(250, 250, 250);
+$inputBgColour: #f5f8f9;
 .iconWrapper {
   display: flex;
   align-items: center;
@@ -35,6 +35,5 @@ $inputBgColour: rgb(250, 250, 250);
 .iconText {
   color: gray;
   margin-left: 20px;
-  width: 100px;
 }
 </style>
