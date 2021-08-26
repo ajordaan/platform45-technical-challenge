@@ -56,6 +56,50 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.formPanel {
+  position: relative;
+}
+
+.leftPanel {
+  z-index: 1000 !important;
+  position: relative;
+}
+
+.coverText {
+  margin-top: 20%;
+}
+
+.slider {
+  position: absolute;
+  z-index: 3;
+  background: orange;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  transition: left 1s ease-in-out;
+  border-radius: 0 30px 30px 0;
+
+  // transform: translateX(-100%);
+}
+.slide-enter,
+.slide-leave-active {
+  left: -100%;
+}
+
+.title {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 50px !important;
+  font-weight: bold;
+  font-size: 2.1rem;
+}
+.subtitle {
+  color: #383838;
+  font-weight: 400;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 1.2rem;
+}
 .wrapper {
   width: unquote("min(100vw, 1500px)");
   margin: 0 auto;
@@ -71,12 +115,20 @@ export default {
 }
 
 @media screen and (max-width: 1023px) {
+  .leftPanel {
+    z-index: 1000;
+  }
   .columns {
     margin: 0;
     border-radius: 0;
     overflow: hidden;
     padding: 0 !important;
     border-style: none;
+  }
+
+  .slider {
+    transform: translateY(-120%);
+    z-index: 3;
   }
 }
 </style>
