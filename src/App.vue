@@ -127,8 +127,16 @@ export default {
   }
 
   .slider {
-    transform: translateY(-120%);
-    z-index: 3;
+    top: -5%;
+    height: 105%;
+    transition: top 1s ease-in-out;
+    border-radius: 0;
+  }
+
+  .slide-enter,
+  .slide-leave-active {
+    left: 0;
+    top: -110%;
   }
 }
 </style>
