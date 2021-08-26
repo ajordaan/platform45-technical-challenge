@@ -22,6 +22,14 @@ $selectedIconBgColour: #b1bfcd;
 .iconWrapper {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+.iconWrapper:hover > .iconContainer {
+  transform: scale(1.4);
+}
+
+.iconClicked {
+  background: $selectedIconBgColour !important;
 }
 
 .iconContainer {
@@ -36,5 +44,13 @@ $selectedIconBgColour: #b1bfcd;
 .iconText {
   color: gray;
   margin-left: 20px;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.4);
 }
 </style>
