@@ -32,20 +32,28 @@
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="date">Date of Birth</label>
-        <input class="input" type="text" placeholder="01/02/1983" name="date" />
+        <input
+          v-model="form.date"
+          class="input"
+          type="text"
+          placeholder="01/02/1983"
+          name="date"
+        />
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="email">Email</label>
         <input
+          v-model="form.email"
           class="input"
           type="text"
-          placeholder="kendall@gmail.com"
+          placeholder="email@example.com"
           name="email"
         />
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="mobile">Mobile</label>
         <input
+          v-model="form.mobile"
           class="input"
           type="text"
           placeholder="+91 98765 43210"
@@ -55,6 +63,7 @@
       <div class="inputWrapper">
         <label class="inputLabel" for="customer">Customer ID</label>
         <input
+          v-model="form.customerID"
           class="input"
           type="text"
           placeholder="576802-ERD0348 45"
@@ -88,7 +97,9 @@
         </div>
       </div>
       <div class="buttonsWrapper">
-        <button id="cancelBtn" class="button">CANCEL</button>
+        <button @click="clearForm()" id="cancelBtn" class="button">
+          CANCEL
+        </button>
         <button id="saveBtn" class="button">SAVE</button>
       </div>
     </div>
@@ -106,6 +117,12 @@ export default {
     };
   },
   methods: {
+    clearForm() {
+      this.form = {};
+      const icons = this.membershipGroup.concat(this.genderGroup);
+
+      for (const i of icons) i.unclick();
+    },
     iconClicked(group, icon) {
       const iconGroup =
         group === "membership" ? this.membershipGroup : this.genderGroup;
