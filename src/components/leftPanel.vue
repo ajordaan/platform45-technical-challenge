@@ -8,7 +8,7 @@
         This is a design that you will need to code up and impress us
       </p>
     </div>
-    <div class="arrowContainer">
+    <div @click="$emit('arrowClicked')" class="arrowContainer">
       <img class="arrow" :src="require(`@/assets/images/arrow.svg`)" />
     </div>
   </div>

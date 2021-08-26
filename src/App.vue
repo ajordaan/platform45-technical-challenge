@@ -41,6 +41,16 @@ import FormPanel from "./components/formPanel.vue";
 import LeftPanel from "./components/leftPanel.vue";
 export default {
   name: "App",
+  data() {
+    return {
+      panelOpen: false,
+    };
+  },
+  methods: {
+    slidePanel() {
+      this.panelOpen = !this.panelOpen;
+    },
+  },
   components: { LeftPanel, FormPanel },
 };
 </script>
