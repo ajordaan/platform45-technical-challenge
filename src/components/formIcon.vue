@@ -1,7 +1,7 @@
 <template>
-  <div class="iconWrapper">
-    <div class="iconContainer">
-      <img :src="require('@/assets/images/' + imageUrl)" />
+  <div @click="iconClicked" class="iconWrapper">
+    <div :class="['iconContainer', 'grow', { iconClicked: clicked }]">
+      <img :src="require('@/assets/images/' + currentImage)" />
     </div>
     <p class="iconText">{{ text }}</p>
   </div>
@@ -12,6 +12,36 @@ export default {
   props: {
     imageUrl: { type: String, required: true },
     text: { type: String, default: "" },
+  },
+  data() {
+    return {
+      currentImage: this.imageUrl,
+      clicked: false,
+    };
+  },
+  methods: {
+    iconClicked() {
+      this.clicked = !this.clicked;
+
+      if (this.clicked) {
+        this.currentImage = this.clickedImageUrl;
+      } else {
+        this.currentImage = this.imageUrl;
+      }
+
+      this.$emit("iconClicked");
+    },
+    unclick() {
+      this.clicked = false;
+      this.currentImage = this.imageUrl;
+    },
+  },
+  computed: {
+    clickedImageUrl() {
+      return (
+        this.imageUrl.split(".")[0] + "--white." + this.imageUrl.split(".")[1]
+      );
+    },
   },
 };
 </script>

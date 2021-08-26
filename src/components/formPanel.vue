@@ -6,19 +6,24 @@
         <input
           class="input"
           type="text"
-          placeholder="Enter email"
+          placeholder="Jane Doe"
           name="name"
+          v-model="form.name"
         />
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="name">Gender</label>
         <div class="iconRow">
           <form-icon
+            ref="maleGender"
+            @iconClicked="iconClicked('gender', 'maleGender')"
             class="genderIconGap"
             text="Male"
             :imageUrl="'mars-symbol.svg'"
           ></form-icon>
           <form-icon
+            ref="femaleGender"
+            @iconClicked="iconClicked('gender', 'femaleGender')"
             class="genderIconGap"
             text="Female"
             :imageUrl="'venus-symbol.svg'"
@@ -60,16 +65,22 @@
         <label class="inputLabel" for="name">Membership</label>
         <div class="iconRow">
           <form-icon
+            ref="classicMembership"
+            @iconClicked="iconClicked('membership', 'classicMembership')"
             class="membershipIconSpacing"
             text="Classic"
             :imageUrl="'card.svg'"
           ></form-icon>
           <form-icon
+            ref="silverMembership"
+            @iconClicked="iconClicked('membership', 'silverMembership')"
             class="membershipIconSpacing"
             text="Silver"
             :imageUrl="'card.svg'"
           ></form-icon>
           <form-icon
+            ref="goldMembership"
+            @iconClicked="iconClicked('membership', 'goldMembership')"
             class="membershipIconSpacing"
             text="Gold"
             :imageUrl="'card.svg'"
@@ -87,7 +98,38 @@
 <script>
 import formIcon from "./formIcon.vue";
 export default {
+  data() {
+    return {
+      form: {},
+      membershipGroup: [],
+      genderGroup: [],
+    };
+  },
+  methods: {
+    iconClicked(group, icon) {
+      const iconGroup =
+        group === "membership" ? this.membershipGroup : this.genderGroup;
+
+      console.log("IconGroup: ");
+      console.dir(iconGroup);
+
+      for (const ig of iconGroup) {
+        if (ig == this.$refs[icon]) continue;
+
+        ig.unclick();
+      }
+    },
+  },
   components: { formIcon },
+  mounted() {
+    this.membershipGroup = [
+      this.$refs.classicMembership,
+      this.$refs.silverMembership,
+      this.$refs.goldMembership,
+    ];
+
+    this.genderGroup = [this.$refs.maleGender, this.$refs.femaleGender];
+  },
 };
 </script>
 
