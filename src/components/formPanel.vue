@@ -39,16 +39,24 @@
           placeholder="01/02/1983"
           name="date"
         />
+        <img class="inputIcon" :src="require('@/assets/images/calendar.svg')" />
       </div>
       <div class="inputWrapper">
-        <label class="inputLabel" for="email">Email</label>
+        <div class="warningWrapper">
+          <div v-if="showWarning" class="circle"></div>
+          <label :class="['inputLabel', { warning: showWarning }]" for="email"
+            >Email</label
+          >
+        </div>
         <input
+          @blur="showWarning = true"
           v-model="form.email"
-          class="input"
+          :class="['input', { inputWarning: showWarning }]"
           type="text"
           placeholder="email@example.com"
           name="email"
         />
+        <div v-if="showWarning" class="warningText">Invalid email address</div>
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="mobile">Mobile</label>
@@ -111,7 +119,8 @@ import formIcon from "./formIcon.vue";
 export default {
   data() {
     return {
-      form: {},
+      form: { email: "" },
+      showWarning: false,
       membershipGroup: [],
       genderGroup: [],
     };
@@ -119,6 +128,7 @@ export default {
   methods: {
     clearForm() {
       this.form = {};
+      this.showWarning = false;
       const icons = this.membershipGroup.concat(this.genderGroup);
 
       for (const i of icons) i.unclick();
@@ -157,12 +167,64 @@ $selectedIconBgColour: #b1bfcd;
 $invalidColour: #ff9200;
 .input {
   margin-left: 30px;
-  height: 50px !important;
+  height: 55px !important;
   border-style: none !important;
   background-color: $inputBgColour !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
+.inputWarning {
+  border: 2px solid $invalidColour !important;
+  padding-left: 10px;
+  color: $invalidColour;
+}
+
+.warningWrapper {
+  position: relative;
+  width: 100px;
+}
+
+.warningText {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  font-size: 14px;
+  color: $invalidColour;
+  // margin-bottom: -40px;
+}
+
+.warning {
+  color: $invalidColour;
+}
+
+// .warning:before {
+//   content: "• ";
+//   position: relative;
+
+//   color: $invalidColour;
+// }
+
+.circle {
+  position: absolute;
+  margin-left: -12px;
+  margin-top: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: $invalidColour;
+  display: inline;
+  border-radius: 100%;
+}
+
+.hidden {
+  display: none;
 }
 
 button {
@@ -191,7 +253,7 @@ button {
 }
 
 .genderIconGap {
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 }
 .genderIconGap:first-of-type {
   margin-right: 50px;
@@ -220,7 +282,8 @@ button {
 }
 
 .inputWrapper {
-  margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
 }
@@ -252,6 +315,13 @@ button {
 }
 
 @media screen and (max-width: 1023px) {
+  .buttonsWrapper {
+    margin-top: 40px;
+  }
+
+  .inputIcon {
+    margin-top: 17px;
+  }
   .form {
     width: 100%;
   }
@@ -268,6 +338,7 @@ button {
   button {
     width: 100%;
     font-size: 18px;
+    padding: 35px 55px;
   }
 
   #saveBtn {
@@ -275,7 +346,7 @@ button {
   }
 
   .inputWrapper {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     display: block;
   }
 
