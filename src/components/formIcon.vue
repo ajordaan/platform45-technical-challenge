@@ -1,5 +1,5 @@
 <template>
-  <div @click="iconClicked" class="iconWrapper">
+  <div @click="iconClicked" class="iconWrapper noselect">
     <div :class="['iconContainer', 'grow', { iconClicked: clicked }]">
       <img :src="require('@/assets/images/' + currentImage)" />
     </div>
@@ -54,9 +54,6 @@ $selectedIconBgColour: #b1bfcd;
   align-items: center;
   cursor: pointer;
 }
-.iconWrapper:hover > .iconContainer {
-  transform: scale(1.4);
-}
 
 .iconClicked {
   background: $selectedIconBgColour !important;
@@ -76,11 +73,9 @@ $selectedIconBgColour: #b1bfcd;
   margin-left: 20px;
 }
 
-.grow {
-  transition: all 0.2s ease-in-out;
-}
-
-.grow:hover {
-  transform: scale(1.4);
+@media (hover: hover) and (pointer: fine) {
+  .iconWrapper:hover > .iconContainer {
+    transform: scale(1.4);
+  }
 }
 </style>
