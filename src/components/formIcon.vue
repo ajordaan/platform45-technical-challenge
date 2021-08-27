@@ -1,7 +1,7 @@
 <template>
-  <div class="iconWrapper">
-    <div class="iconContainer">
-      <img :src="require('@/assets/images/' + imageUrl)" />
+  <div @click="iconClicked" class="iconWrapper noselect">
+    <div :class="['iconContainer', 'grow', { iconClicked: clicked }]">
+      <img :src="require('@/assets/images/' + currentImage)" />
     </div>
     <p class="iconText">{{ text }}</p>
   </div>
@@ -13,6 +13,42 @@ export default {
     imageUrl: { type: String, required: true },
     text: { type: String, default: "" },
   },
+  data() {
+    return {
+      currentImage: this.imageUrl,
+      clicked: false,
+    };
+  },
+  methods: {
+    /**
+     * Switch icon image on click
+     */
+    iconClicked() {
+      this.clicked = !this.clicked;
+
+      if (this.clicked) {
+        this.currentImage = this.clickedImageUrl;
+      } else {
+        this.currentImage = this.imageUrl;
+      }
+
+      this.$emit("iconClicked");
+    },
+    /**
+     * Remove item click styling
+     */
+    unclick() {
+      this.clicked = false;
+      this.currentImage = this.imageUrl;
+    },
+  },
+  computed: {
+    clickedImageUrl() {
+      return (
+        this.imageUrl.split(".")[0] + "--white." + this.imageUrl.split(".")[1]
+      );
+    },
+  },
 };
 </script>
 
@@ -22,6 +58,11 @@ $selectedIconBgColour: #b1bfcd;
 .iconWrapper {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.iconClicked {
+  background: $selectedIconBgColour !important;
 }
 
 .iconContainer {
@@ -36,5 +77,11 @@ $selectedIconBgColour: #b1bfcd;
 .iconText {
   color: gray;
   margin-left: 20px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iconWrapper:hover > .iconContainer {
+    transform: scale(1.4);
+  }
 }
 </style>

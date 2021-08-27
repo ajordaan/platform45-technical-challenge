@@ -1,34 +1,64 @@
 <template>
   <div id="app">
-    <div class="wrapper">
-      <div class="columns is-desktop box">
-        <div class="has-text-centered column is-5-desktop">
-          <left-panel></left-panel>
-        </div>
-        <div class="formPanel column is-7-desktop">
-          <form-panel></form-panel>
+    <transition name="fade">
+      <div v-show="pageLoaded" class="wrapper">
+        <div class="columns is-desktop box">
+          <div class="leftPanel has-text-centered column is-5-desktop">
+            <left-panel @arrowClicked="slidePanel"></left-panel>
+          </div>
+          <div class="formPanel column is-7-desktop">
+            <transition name="slide">
+              <slider-panel v-show="panelOpen"> </slider-panel>
+            </transition>
+            <form-panel></form-panel>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import FormPanel from "./components/formPanel.vue";
 import LeftPanel from "./components/leftPanel.vue";
+import SliderPanel from "./components/SliderPanel.vue";
 export default {
   name: "App",
-  components: { LeftPanel, FormPanel },
+  data() {
+    return {
+      pageLoaded: false,
+      panelOpen: false,
+    };
+  },
+  methods: {
+    slidePanel() {
+      this.panelOpen = !this.panelOpen;
+    },
+  },
+  mounted() {
+    this.pageLoaded = true;
+  },
+  components: { LeftPanel, FormPanel, SliderPanel },
 };
 </script>
 
 <style lang="scss" scoped>
+.formPanel {
+  position: relative;
+}
+
+.leftPanel {
+  z-index: 10 !important;
+  position: relative;
+}
+
 .wrapper {
   width: unquote("min(100vw, 1500px)");
   margin: 0 auto;
 }
 .columns {
   margin: 75px 100px;
+  margin-top: 50px;
   border-radius: 30px;
   overflow: hidden;
   padding: 0 !important;
@@ -38,6 +68,9 @@ export default {
 }
 
 @media screen and (max-width: 1023px) {
+  .leftPanel {
+    z-index: 1000;
+  }
   .columns {
     margin: 0;
     border-radius: 0;

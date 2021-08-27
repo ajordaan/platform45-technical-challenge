@@ -6,19 +6,24 @@
         <input
           class="input"
           type="text"
-          placeholder="Enter email"
+          placeholder="Jane Doe"
           name="name"
+          v-model="form.name"
         />
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="name">Gender</label>
         <div class="iconRow">
           <form-icon
+            ref="maleGender"
+            @iconClicked="iconClicked('gender', 'maleGender')"
             class="genderIconGap"
             text="Male"
             :imageUrl="'mars-symbol.svg'"
           ></form-icon>
           <form-icon
+            ref="femaleGender"
+            @iconClicked="iconClicked('gender', 'femaleGender')"
             class="genderIconGap"
             text="Female"
             :imageUrl="'venus-symbol.svg'"
@@ -27,20 +32,36 @@
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="date">Date of Birth</label>
-        <input class="input" type="text" placeholder="01/02/1983" name="date" />
-      </div>
-      <div class="inputWrapper">
-        <label class="inputLabel" for="email">Email</label>
         <input
+          v-model="form.date"
           class="input"
           type="text"
-          placeholder="kendall@gmail.com"
+          placeholder="01/02/1983"
+          name="date"
+        />
+        <img class="inputIcon" :src="require('@/assets/images/calendar.svg')" />
+      </div>
+      <div class="inputWrapper">
+        <div class="warningWrapper">
+          <div v-if="showWarning" class="circle"></div>
+          <label :class="['inputLabel', { warning: showWarning }]" for="email"
+            >Email</label
+          >
+        </div>
+        <input
+          @blur="showWarning = true"
+          v-model="form.email"
+          :class="['input', { inputWarning: showWarning }]"
+          type="text"
+          placeholder="email@example.com"
           name="email"
         />
+        <div v-if="showWarning" class="warningText">Invalid email address</div>
       </div>
       <div class="inputWrapper">
         <label class="inputLabel" for="mobile">Mobile</label>
         <input
+          v-model="form.mobile"
           class="input"
           type="text"
           placeholder="+91 98765 43210"
@@ -50,6 +71,7 @@
       <div class="inputWrapper">
         <label class="inputLabel" for="customer">Customer ID</label>
         <input
+          v-model="form.customerID"
           class="input"
           type="text"
           placeholder="576802-ERD0348 45"
@@ -60,16 +82,22 @@
         <label class="inputLabel" for="name">Membership</label>
         <div class="iconRow">
           <form-icon
+            ref="classicMembership"
+            @iconClicked="iconClicked('membership', 'classicMembership')"
             class="membershipIconSpacing"
             text="Classic"
             :imageUrl="'card.svg'"
           ></form-icon>
           <form-icon
+            ref="silverMembership"
+            @iconClicked="iconClicked('membership', 'silverMembership')"
             class="membershipIconSpacing"
             text="Silver"
             :imageUrl="'card.svg'"
           ></form-icon>
           <form-icon
+            ref="goldMembership"
+            @iconClicked="iconClicked('membership', 'goldMembership')"
             class="membershipIconSpacing"
             text="Gold"
             :imageUrl="'card.svg'"
@@ -77,7 +105,9 @@
         </div>
       </div>
       <div class="buttonsWrapper">
-        <button id="cancelBtn" class="button">CANCEL</button>
+        <button @click="clearForm()" id="cancelBtn" class="button">
+          CANCEL
+        </button>
         <button id="saveBtn" class="button">SAVE</button>
       </div>
     </div>
@@ -87,7 +117,49 @@
 <script>
 import formIcon from "./formIcon.vue";
 export default {
+  data() {
+    return {
+      form: { email: "" },
+      showWarning: false,
+      membershipGroup: [],
+      genderGroup: [],
+    };
+  },
+  methods: {
+    /**
+     * Clear the form object, hide warning and 'unclick' all form icons
+     */
+    clearForm() {
+      this.form = {};
+      this.showWarning = false;
+      const icons = this.membershipGroup.concat(this.genderGroup);
+
+      for (const i of icons) i.unclick();
+    },
+    /**
+     * When an icon is clicked, 'unclick' the other icons in the group
+     */
+    iconClicked(group, icon) {
+      const iconGroup =
+        group === "membership" ? this.membershipGroup : this.genderGroup;
+
+      for (const ig of iconGroup) {
+        if (ig == this.$refs[icon]) continue;
+
+        ig.unclick();
+      }
+    },
+  },
   components: { formIcon },
+  mounted() {
+    this.membershipGroup = [
+      this.$refs.classicMembership,
+      this.$refs.silverMembership,
+      this.$refs.goldMembership,
+    ];
+
+    this.genderGroup = [this.$refs.maleGender, this.$refs.femaleGender];
+  },
 };
 </script>
 
@@ -98,12 +170,52 @@ $selectedIconBgColour: #b1bfcd;
 $invalidColour: #ff9200;
 .input {
   margin-left: 30px;
-  height: 50px !important;
+  height: 55px !important;
   border-style: none !important;
   background-color: $inputBgColour !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
+.inputWarning {
+  border: 2px solid $invalidColour !important;
+  padding-left: 10px;
+  color: $invalidColour;
+}
+
+.warningWrapper {
+  position: relative;
+  width: 100px;
+}
+
+.warningText {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  font-size: 14px;
+  color: $invalidColour;
+}
+
+.warning {
+  color: $invalidColour;
+}
+
+.circle {
+  position: absolute;
+  margin-left: -12px;
+  margin-top: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: $invalidColour;
+  display: inline;
+  border-radius: 100%;
 }
 
 button {
@@ -131,9 +243,6 @@ button {
   background-color: darken($inputBgColour, 10%);
 }
 
-.genderIconGap {
-  margin-bottom: 15px;
-}
 .genderIconGap:first-of-type {
   margin-right: 50px;
 }
@@ -161,7 +270,8 @@ button {
 }
 
 .inputWrapper {
-  margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
 }
@@ -189,10 +299,16 @@ button {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  //flex-grow: 4;
 }
 
 @media screen and (max-width: 1023px) {
+  .buttonsWrapper {
+    margin-top: 40px;
+  }
+
+  .inputIcon {
+    margin-top: 17px;
+  }
   .form {
     width: 100%;
   }
@@ -209,6 +325,7 @@ button {
   button {
     width: 100%;
     font-size: 18px;
+    padding: 35px 55px;
   }
 
   #saveBtn {
@@ -216,7 +333,7 @@ button {
   }
 
   .inputWrapper {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     display: block;
   }
 
