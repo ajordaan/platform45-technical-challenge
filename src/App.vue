@@ -7,7 +7,7 @@
         </div>
         <div class="formPanel column is-7-desktop">
           <transition name="slide">
-            <div class="slider" v-show="panelOpen">
+            <div id="sliderPanel" class="slider" v-show="panelOpen">
               <div class="coverText">
                 <p class="title">My world today</p>
                 <p class="subtitle mt-3">
@@ -61,7 +61,7 @@ export default {
 }
 
 .leftPanel {
-  z-index: 1000 !important;
+  z-index: 10 !important;
   position: relative;
 }
 
