@@ -1,6 +1,16 @@
 <template>
   <div class="leftPanel">
-    <img class="avatar" :src="require(`@/assets/images/face.svg`)" />
+    <div class="avatar">
+      <div class="imagePlaceholder">
+        <transition name="fade">
+          <img
+            v-show="imageLoaded"
+            v-on:load="imageLoaded = true"
+            :src="require(`@/assets/images/face.svg`)"
+          />
+        </transition>
+      </div>
+    </div>
 
     <div>
       <p class="title">Front-end challenge!</p>
@@ -9,10 +19,14 @@
       </p>
     </div>
     <div @click="clicked" class="arrowContainer noselect grow">
-      <img
-        :class="['arrow', { flip: flipped }]"
-        :src="require(`@/assets/images/arrow.svg`)"
-      />
+      <transition name="fade">
+        <img
+          v-show="arrowLoaded"
+          v-on:load="arrowLoaded = true"
+          :class="['arrow', { flip: flipped }]"
+          :src="require(`@/assets/images/arrow.svg`)"
+        />
+      </transition>
     </div>
   </div>
 </template>
@@ -22,6 +36,8 @@ export default {
   data() {
     return {
       flipped: false,
+      imageLoaded: false,
+      arrowLoaded: false,
     };
   },
   methods: {
@@ -86,6 +102,14 @@ export default {
 
 .flip {
   transform: rotateY(180deg);
+}
+
+.imagePlaceholder {
+  height: 238px;
+  width: 238px;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: #ffad00;
 }
 
 .avatar {

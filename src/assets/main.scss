@@ -14,6 +14,19 @@
   transition: all 0.2s ease-in-out;
 }
 
+.fade-enter-active {
+  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .grow:hover {
     transform: scale(1.4);
