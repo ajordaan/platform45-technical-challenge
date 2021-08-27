@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <div class="wrapper">
-      <div class="columns is-desktop box">
-        <div class="leftPanel has-text-centered column is-5-desktop">
-          <left-panel @arrowClicked="slidePanel"></left-panel>
-        </div>
-        <div class="formPanel column is-7-desktop">
-          <transition name="slide">
+    <transition name="fade">
+      <div v-show="pageLoaded" class="wrapper">
+        <div class="columns is-desktop box">
+          <div class="leftPanel has-text-centered column is-5-desktop">
+            <left-panel @arrowClicked="slidePanel"></left-panel>
+          </div>
+          <div class="formPanel column is-7-desktop">
+            <transition name="slide">
               <slider-panel v-show="panelOpen"> </slider-panel>
-          </transition>
-
-          <form-panel></form-panel>
+            </transition>
+            <form-panel></form-panel>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ export default {
   name: "App",
   data() {
     return {
+      pageLoaded: false,
       panelOpen: false,
     };
   },
@@ -33,7 +35,9 @@ export default {
       this.panelOpen = !this.panelOpen;
     },
   },
-  components: { LeftPanel, FormPanel },
+  mounted() {
+    this.pageLoaded = true;
+  },
   components: { LeftPanel, FormPanel, SliderPanel },
 };
 </script>
