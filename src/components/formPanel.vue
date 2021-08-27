@@ -137,9 +137,6 @@ export default {
       const iconGroup =
         group === "membership" ? this.membershipGroup : this.genderGroup;
 
-      console.log("IconGroup: ");
-      console.dir(iconGroup);
-
       for (const ig of iconGroup) {
         if (ig == this.$refs[icon]) continue;
 
@@ -198,19 +195,11 @@ $invalidColour: #ff9200;
   bottom: -20px;
   font-size: 14px;
   color: $invalidColour;
-  // margin-bottom: -40px;
 }
 
 .warning {
   color: $invalidColour;
 }
-
-// .warning:before {
-//   content: "• ";
-//   position: relative;
-
-//   color: $invalidColour;
-// }
 
 .circle {
   position: absolute;
@@ -221,10 +210,6 @@ $invalidColour: #ff9200;
   background-color: $invalidColour;
   display: inline;
   border-radius: 100%;
-}
-
-.hidden {
-  display: none;
 }
 
 button {
@@ -252,9 +237,6 @@ button {
   background-color: darken($inputBgColour, 10%);
 }
 
-.genderIconGap {
-  // margin-bottom: 15px;
-}
 .genderIconGap:first-of-type {
   margin-right: 50px;
 }
@@ -311,7 +293,6 @@ button {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  //flex-grow: 4;
 }
 
 @media screen and (max-width: 1023px) {

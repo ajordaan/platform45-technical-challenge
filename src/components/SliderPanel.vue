@@ -38,8 +38,6 @@ export default {};
   left: 0;
   transition: left 1s ease-in-out;
   border-radius: 0 30px 30px 0;
-
-  // transform: translateX(-100%);
 }
 
 .slide-enter,
@@ -68,6 +66,19 @@ export default {};
     height: 105%;
     transition: top 1s ease-in-out;
     border-radius: 0;
+  }
+
+  .slider {
+    top: -5%;
+    height: 105%;
+    transition: top 1s ease-in-out;
+    border-radius: 0;
+  }
+
+  .slide-enter,
+  .slide-leave-active {
+    left: 0;
+    top: -110%;
   }
 }
 </style>

@@ -58,6 +58,7 @@ export default {
 }
 .columns {
   margin: 75px 100px;
+  margin-top: 50px;
   border-radius: 30px;
   overflow: hidden;
   padding: 0 !important;
@@ -76,19 +77,6 @@ export default {
     overflow: hidden;
     padding: 0 !important;
     border-style: none;
-  }
-
-  .slider {
-    top: -5%;
-    height: 105%;
-    transition: top 1s ease-in-out;
-    border-radius: 0;
-  }
-
-  .slide-enter,
-  .slide-leave-active {
-    left: 0;
-    top: -110%;
   }
 }
 </style>
