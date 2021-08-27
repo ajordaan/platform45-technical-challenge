@@ -126,6 +126,9 @@ export default {
     };
   },
   methods: {
+    /**
+     * Clear the form object, hide warning and 'unclick' all form icons
+     */
     clearForm() {
       this.form = {};
       this.showWarning = false;
@@ -133,6 +136,9 @@ export default {
 
       for (const i of icons) i.unclick();
     },
+    /**
+     * When an icon is clicked, 'unclick' the other icons in the group
+     */
     iconClicked(group, icon) {
       const iconGroup =
         group === "membership" ? this.membershipGroup : this.genderGroup;

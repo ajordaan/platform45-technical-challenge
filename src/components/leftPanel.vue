@@ -41,6 +41,11 @@ export default {
     };
   },
   methods: {
+    /**
+     * Send arrow clicked event to parent so slider can be opened
+     * Flip arrow icon
+     * If on mobile and panel open, scroll window to slider panel
+     */
     clicked() {
       this.flipped = !this.flipped;
       this.$emit("arrowClicked");

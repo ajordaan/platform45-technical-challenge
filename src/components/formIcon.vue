@@ -20,6 +20,9 @@ export default {
     };
   },
   methods: {
+    /**
+     * Switch icon image on click
+     */
     iconClicked() {
       this.clicked = !this.clicked;
 
@@ -31,6 +34,9 @@ export default {
 
       this.$emit("iconClicked");
     },
+    /**
+     * Remove item click styling
+     */
     unclick() {
       this.clicked = false;
       this.currentImage = this.imageUrl;
